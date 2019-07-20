@@ -82,11 +82,13 @@ const book = (state = initialState, action) => {
 				isRejected: true
 			};
 		case 'EDIT_BOOK_FULFILLED':
+			let res = state.bookList.find((item)=> Number(item.idBook) === Number(action.payload.data.result.idBook))
+			state.bookList[state.bookList.indexOf(res)]=action.payload.data.result
 			return {
 				...state,
 				isLoading: false,
 				isFulfilled: true,
-				bookList: [ state.bookList, action.payload.data[0] ]
+				// bookList: [ state.bookList, action.payload.data[0] ]
 			};
 		case 'DELETE_BOOK_PENDING':
 			return {
@@ -108,12 +110,7 @@ const book = (state = initialState, action) => {
 				isLoading: false,
 				isFulfilled: true,
 				// bookList: [ state.bookList, action.payload.data[0] ]
-			};
-		case 'SEARCH_BOOK':
-			return {
-				...state,
-				bookList: [ state.bookList, action.search ]
-			};
+			};		
 		default:
 			return state;
 	}

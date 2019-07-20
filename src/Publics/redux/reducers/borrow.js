@@ -41,11 +41,12 @@ const borrow = (state = initialState, action) => {
 				isRejected: true
 			};
 		case 'POST_BORROW_FULFILLED':
+			state.borrowList.push(action.payload.data.result);
 			return {
 				...state,
 				isLoading: false,
 				isFulfilled: true,
-				borrowList: [state.borrowList, action.payload.data[0]]
+				// borrowList: [state.borrowList, action.payload.data[0]]
 			};
 		case 'UPDATE_BORROW_PENDING':
 			return {
