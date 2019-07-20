@@ -1,0 +1,35 @@
+.flex {
+    display: flex;
+    flex-wrap: wrap;  
+    margin-top: 10px;
+    height: fit-content; 
+    width: fit-content;   
+    margin-right: 150px;
+    margin-left: 200px;
+    float: left;
+  }
+  
+  .div {
+    background-color: #fffafa;
+    width: 180px;
+    height: 300px;
+    margin: 40px;
+    box-shadow: 0px 2px 3px rgba(160, 160, 160, 0.933);
+    border-radius: 15px;
+  }
+  .img {
+    height: 200px;
+    width: 180px;
+    border-radius: 15px;
+}
+.font{
+  margin-top: 5px;
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: 500;
+}
+.text{
+  text-decoration: none;
+  color: black;  
+  outline: none;
+}

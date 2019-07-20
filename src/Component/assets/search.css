@@ -1,0 +1,9 @@
+.search{
+    border-radius: 40px;
+    height: 40px;
+    width: 75%;
+    text-indent: 35px;
+    border-color: transparent;
+    box-shadow: 0px 1px 5px rgb(170, 170, 170);    
+    color : rgb(148, 148, 148);
+}
