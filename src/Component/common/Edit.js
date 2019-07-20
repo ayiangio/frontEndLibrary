@@ -152,9 +152,9 @@ class Borrow extends Component {
 						</Form>
 					</ModalBody>
 					<ModalFooter>
-                    <a href={`/book/desc/${this.state.books.idBook}`}><button class="buttonSave" onClick={editbooks.bind(this)}>
+                    <Link to={`/book/desc/${this.state.books.idBook}`}><button class="buttonSave" onClick={editbooks.bind(this)}>
 							SAVE
-						</button></a>
+						</button></Link>
 					</ModalFooter>
 				</Modal>
 			</div>
