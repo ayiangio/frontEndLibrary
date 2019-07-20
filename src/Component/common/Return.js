@@ -40,24 +40,30 @@ class Borrow extends Component {
 	}
 	convert = (date) => {
 		let result = 0;
-		let data = Date.parse(date);
-		let newDate = new Date(data);
-		let expireDay = newDate.getDate();
-		let month = newDate.getMonth();
-		let newData = new Date();
-		let newDay = newData.getDate();
-		let newMonth = newData.getMonth();
-		if (month == newMonth) {
-			if (expireDay >= newDay) {
-				result = 0;
-			} else {
-				result = -1 * ((newDay - expireDay) * 2000);
-			}
+		let tanggal = Date.parse(date);
+		let newTanggal = Date.parse(new Date());
+		let result = ((newTanggal-tanggal)/86400000) * 3000
+		if (result < 0 )
+		{
+			return 0;
+		} 
+		else {
+			return result;
 		}
+		// let expireDay = newDate.getDate();
+		// let month = newDate.getMonth();
 		
-		console.log(newDay);
-		console.log(expireDay);
-		return result;
+		// let newDay = newData.getDate();
+		// let newMonth = newData.getMonth();
+		// if (month == newMonth) {
+		// 	if (expireDay >= newDay) {
+		// 		result = 0;
+		// 	} else {
+		// 		result = -1 * ((newDay - expireDay) * 2000);
+		// 	}
+		// }
+		
+		// return result;
 	};
 	render() {
 		const up = () => {
