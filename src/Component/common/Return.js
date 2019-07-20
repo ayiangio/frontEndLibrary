@@ -42,7 +42,7 @@ class Borrow extends Component {
 		let result = 0;
 		let tanggal = Date.parse(date);
 		let newTanggal = Date.parse(new Date());
-		let result = ((newTanggal-tanggal)/86400000) * 3000
+		result = ((newTanggal-tanggal)/86400000) * 3000
 		if (result < 0 )
 		{
 			return 0;
