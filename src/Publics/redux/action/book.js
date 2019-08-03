@@ -3,27 +3,27 @@ import axios from 'axios';
 export const getBook = () => {
   return {
     type: 'GET_BOOK',
-    payload: axios.get(`http://localhost:5000/book`),
+    payload: axios.get(`https://restapiperpus.herokuapp.com/book`),
   };
 };
 export const getBookById = (bookid) => {
   return {
     type: 'GET_BOOK_ID',
-    payload: axios.get(`http://localhost:5000/book/${bookid}`),
+    payload: axios.get(`https://restapiperpus.herokuapp.com/book/${bookid}`),
   };
 };
 export const postBook = (data) => {
   console.log(data)
   return {
     type: 'POST_BOOK',
-    payload: axios.post(`http://localhost:5000/book`,data),
+    payload: axios.post(`https://restapiperpus.herokuapp.com/book`,data),
   };
 };
 export const editBook = (data,id) => {
   return {
 
     type: 'EDIT_BOOK',
-    payload: axios.patch(`http://localhost:5000/book/${id}`,data,{
+    payload: axios.patch(`https://restapiperpus.herokuapp.com/book/${id}`,data,{
       headers: {
           "authorization": "x-control-user",
           "x-access-token": `bearer: ${localStorage.jwtToken}`,
@@ -35,7 +35,7 @@ export const editBook = (data,id) => {
 export const deleteBook = (bookid) => {
   return {
     type: 'DELETE_BOOK',
-    payload: axios.delete(`http://localhost:5000/book/${bookid}`,{
+    payload: axios.delete(`https://restapiperpus.herokuapp.com/book/${bookid}`,{
       headers: {
           "authorization": "x-control-user",
           "x-access-token": `bearer: ${localStorage.jwtToken}`,

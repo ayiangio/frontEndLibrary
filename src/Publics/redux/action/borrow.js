@@ -4,7 +4,7 @@ export const postBorrow = (data) =>{
     console.log(data)
     return {        
         type:'POST_BORROW',
-        payload :axios.post(`http://localhost:5000/borrow/`,data,{
+        payload :axios.post(`https://restapiperpus.herokuapp.com/borrow/`,data,{
             headers: {
                 "authorization": "x-control-user",
                 "x-access-token": `bearer: ${localStorage.jwtToken}`,
@@ -16,7 +16,7 @@ export const postBorrow = (data) =>{
 export const getBorrow = (idBook) =>{
     return {
         type:'GET_BORROW',
-        payload :axios.get(`http://localhost:5000/borrow/${idBook}`,{
+        payload :axios.get(`https://restapiperpus.herokuapp.com/borrow/${idBook}`,{
             headers: {
                 "authorization": "x-control-user",
                 "x-access-token": `bearer: ${localStorage.jwtToken}`,
@@ -30,7 +30,7 @@ export const getListBorrow = (idUser) =>{
     console.log(id)
     return {
         type:'GET_LIST_BORROW',
-        payload :axios.get(`http://localhost:5000/borrow/list/${id}`,{
+        payload :axios.get(`https://restapiperpus.herokuapp.com/borrow/list/${id}`,{
             headers: {
                 "authorization": "x-control-user",
                 "x-access-token": `bearer: ${localStorage.jwtToken}`,
@@ -43,7 +43,7 @@ export const getListBorrow = (idUser) =>{
 export const getAllListBorrow = () =>{
     return {
         type:'GET_ALL_BORROW',
-        payload :axios.get(`http://localhost:5000/borrow/`,{
+        payload :axios.get(`https://restapiperpus.herokuapp.com/borrow/`,{
             headers: {
                 "authorization": "x-control-user",
                 "x-access-token": `bearer: ${localStorage.jwtToken}`,
@@ -58,7 +58,7 @@ export const updateBorrow = (idBook,data) =>{
     console.log(data)
     return {
         type:'UPDATE_BORROW',
-        payload :axios.patch(`http://localhost:5000/borrow/${idBook}`,{penalty:data},{
+        payload :axios.patch(`https://restapiperpus.herokuapp.com/borrow/${idBook}`,{penalty:data},{
             headers: {
                 "authorization": "x-control-user",
                 "x-access-token": `bearer: ${localStorage.jwtToken}`,
