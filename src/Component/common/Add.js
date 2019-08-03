@@ -58,7 +58,7 @@ class Add extends Component {
 			dataFile.append('image', this.state.file)
 			dataFile.append('bookName', this.state.title)
 			dataFile.append('author', this.state.author)
-			dataFile.append('locRack', this.state.locRack)
+			dataFile.append('locRack', this.state.location)
 			dataFile.append('desc', this.state.desc)
 			dataFile.append('idCat', idCat)
 			// this.state.book.push({
