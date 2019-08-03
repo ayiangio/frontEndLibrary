@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
 import { connect } from 'react-redux'
 import {
 	Modal,
@@ -14,7 +13,7 @@ import {
 } from 'reactstrap';
 import '../assets/button.css';
 import { postBook } from '../../Publics/redux/action/book';
-//import Flex from './'
+import swal from 'sweetalert';
 class Add extends Component {
 	constructor(props) {
 		super(props);
@@ -63,12 +62,29 @@ class Add extends Component {
 			console.log(this.state.book);
 		};
 		let add = async () => {
-			await this.props.dispatch(postBook(this.state.book[0]));				
+			await this.props.dispatch(postBook(this.state.book[0])).then(()=>{
+                swal({
+                    title: "Succes",
+                    text: "Add Success !!",
+                    icon: "success",
+                    button: "OK"
+                })
+            })
+            .catch(()=>{
+                swal({
+                    title: "Add Failed",
+                    text: "Book Is Avalaible",
+                    icon: "warning",
+                    buttons: "OK"
+                }).then(() => {
+					window.location.href = '/book';
+				  })
+            })				
 		};
 		return (
 			<div>
 				<button class="button2" onClick={this.toggle}>
-					ADD
+					{localStorage.status === "0"? <label>ADD</label> : <label>Donate</label>}
 				</button>
 				<Modal isOpen={this.state.modal} toggle={this.toggle} className="{this.props.className} modal-lg">
 					<ModalHeader toggle={this.toggle}>

@@ -1,119 +1,122 @@
 const initialState = {
-	bookList: [],
+	userList: [],
 	isLoading: false,
 	isFulfilled: false,
-	isRejected: false
+	isRejected: false,
+	token:''
 };
 
-const book = (state = initialState, action) => {
+const user = (state = initialState, action) => {
 	switch (action.type) {
-		case 'GET_BOOK_PENDING':
+		case 'LOGIN_PENDING':
 			return {
 				...state,
 				isLoading: true,
 				isFulfilled: false,
 				isRejected: false
 			};
-		case 'GET_BOOK_REJECTED':
+		case 'LOGIN_REJECTED':
 			return {
 				...state,
 				isLoading: false,
 				isRejected: true
 			};
-		case 'GET_BOOK_FULFILLED':
+		case 'LOGIN_FULFILLED':
+			// state.userList.push(action.payload.data);
 			return {
 				...state,
 				isLoading: false,
 				isFulfilled: true,
-				bookList: action.payload.data.result
+				userList: [state.userList, action.payload]
 			};
-		case 'GET_BOOK_ID_PENDING':
+		case 'GET_USER_PENDING':
 			return {
 				...state,
 				isLoading: true,
 				isFulfilled: false,
 				isRejected: false
 			};
-		case 'GET_BOOK_ID_REJECTED':
+		case 'GET_USER_REJECTED':
 			return {
 				...state,
 				isLoading: false,
 				isRejected: true
 			};
-		case 'GET_BOOK_ID_FULFILLED':
+		case 'GET_USER_FULFILLED':
+			// state.userList.push(action.payload.data);
 			return {
 				...state,
 				isLoading: false,
 				isFulfilled: true,
-				bookList: action.payload.data.result
+				userList: action.payload.data.result
 			};
-		case 'POST_BOOK_PENDING':
+		case 'GET_ALL_USER_PENDING':
 			return {
 				...state,
 				isLoading: true,
 				isFulfilled: false,
 				isRejected: false
 			};
-		case 'POST_BOOK_REJECTED':
+		case 'GET_ALL_USER_REJECTED':
 			return {
 				...state,
 				isLoading: false,
 				isRejected: true
 			};
-		case 'POST_BOOK_FULFILLED':
-			state.bookList.push(action.payload.data.result);
+		case 'GET_ALL_USER_FULFILLED':
+			// state.userList.push(action.payload.data);
 			return {
 				...state,
 				isLoading: false,
 				isFulfilled: true,
-				// bookList: [ state.bookList, action.payload.data[0] ]
+				userList: action.payload.data.result
 			};
-		case 'EDIT_BOOK_PENDING':
+		case 'DELETE_USER_PENDING':
 			return {
 				...state,
 				isLoading: true,
 				isFulfilled: false,
 				isRejected: false
 			};
-		case 'EDIT_BOOK_REJECTED':
+		case 'DELETE_USER_REJECTED':
 			return {
 				...state,
 				isLoading: false,
 				isRejected: true
 			};
-		case 'EDIT_BOOK_FULFILLED':
-			// let res = state.bookList.find((item)=> Number(item.idBook) === Number(action.payload.data.result.idBook))
-			// state.bookList[state.bookList.indexOf(res)]=action.payload.data.result
+		case 'DELETE_USER_FULFILLED':
+			// state.userList.push(action.payload.data);
 			return {
 				...state,
 				isLoading: false,
 				isFulfilled: true,
-				bookList: [ state.bookList, action.payload.data[0] ]
+				userList: [state.userList, action.payload]
 			};
-		case 'DELETE_BOOK_PENDING':
+		case 'GET_TOKEN_PENDING':
 			return {
 				...state,
 				isLoading: true,
 				isFulfilled: false,
 				isRejected: false
 			};
-		case 'DELETE_BOOK_REJECTED':
+		case 'GET_TOKEN_REJECTED':
+			localStorage.clear()
 			return {
 				...state,
 				isLoading: false,
-				isRejected: true
+				isRejected: true,				
 			};
-		case 'DELETE_BOOK_FULFILLED':
-			state.bookList.filter((item)=> item.idBook === action.payload.data.result);
+		case 'GET_TOKEN_FULFILLED':
+			// state.userList.push(action.payload.data);
 			return {
 				...state,
 				isLoading: false,
 				isFulfilled: true,
-				// bookList: [ state.bookList, action.payload.data[0] ]
-			};		
+				userList: action.payload.data
+			};
 		default:
 			return state;
 	}
 };
 
-export default book;
+export default user;

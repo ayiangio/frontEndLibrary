@@ -26,7 +26,7 @@ const borrow = (state = initialState, action) => {
 				isLoading: false,
 				isFulfilled: true,
 				borrowList: action.payload.data.result
-			};		
+			};
 		case 'POST_BORROW_PENDING':
 			return {
 				...state,
@@ -67,6 +67,47 @@ const borrow = (state = initialState, action) => {
 				isLoading: false,
 				isFulfilled: true,
 				borrowList: [state.borrowList, action.payload.data[0]]
+			};
+		case 'GET_LIST_BORROW_PENDING':
+			return {
+				...state,
+				isLoading: true,
+				isFulfilled: false,
+				isRejected: false
+			};
+		case 'GET_LIST_BORROW_REJECTED':
+			return {
+				...state,
+				isLoading: false,
+				isRejected: true
+			};
+		case 'GET_LIST_BORROW_FULFILLED':
+			return {
+				...state,
+				isLoading: false,
+				isFulfilled: true,
+				borrowList: action.payload.data.result
+			};
+
+		case 'GET_ALL_BORROW_PENDING':
+			return {
+				...state,
+				isLoading: true,
+				isFulfilled: false,
+				isRejected: false
+			};
+		case 'GET_ALL_BORROW_REJECTED':
+			return {
+				...state,
+				isLoading: false,
+				isRejected: true
+			};
+		case 'GET_ALL_BORROW_FULFILLED':
+			return {
+				...state,
+				isLoading: false,
+				isFulfilled: true,
+				borrowList: action.payload.data.result
 			};
 		default:
 			return state;

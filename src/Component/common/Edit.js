@@ -31,6 +31,7 @@ class Borrow extends Component {
     changeHandle = (e) =>{
         const name = e.currentTarget.name
         const val = e.currentTarget.value
+        // eslint-disable-next-line react/no-direct-mutation-state
         this.state.books[name] = val
         this.setState({books:this.state.books})
         

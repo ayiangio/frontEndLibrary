@@ -36,7 +36,8 @@ class Borrow extends Component {
 		const borrow = () => {
 			this.state.borrow.push({        
         		idBook: this.state.id,
-        		idUser: this.state.userId,
+				idCard: this.state.idCard,				
+        		idUser: Number(localStorage.idUser),
 			});
 			add()
 			this.setState((prevState) => ({
@@ -66,7 +67,7 @@ class Borrow extends Component {
 									<Input
 										type="text"
 										name="title"
-										onChange={(e) => this.setState({ userId: e.target.value })}
+										onChange={(e) => this.setState({ idCard: e.target.value })}
 										id="title"
 										placeholder="User Id..."
 										bsSize="lg"

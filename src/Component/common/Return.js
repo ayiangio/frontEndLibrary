@@ -52,20 +52,6 @@ class Borrow extends Component {
 		else {
 			return (result);
 		}
-		// let expireDay = newDate.getDate();
-		// let month = newDate.getMonth();
-		
-		// let newDay = newData.getDate();
-		// let newMonth = newData.getMonth();
-		// if (month == newMonth) {
-		// 	if (expireDay >= newDay) {
-		// 		result = 0;
-		// 	} else {
-		// 		result = -1 * ((newDay - expireDay) * 2000);
-		// 	}
-		// }
-		
-		// return result;
 	};
 	render() {
 		const up = () => {

@@ -7,16 +7,6 @@ import Borrow from '../Component/common/Borrow';
 import Return from '../Component/common/Return';
 import './assets/bookDesc.css';
 
-// function convert(date) {
-// 	let data = Date.parse(date);
-// 	let newDate = new Date(data);
-// 	let day = newDate.getDate();
-// 	let months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
-// 	let month = months[newDate.getMonth()];
-// 	var year = newDate.getFullYear();
-// 	return `${day} ${month} ${year}`;
-// }
-
 class BookDesc extends Component {
 	state = {
 		books: []
@@ -45,7 +35,7 @@ class BookDesc extends Component {
 									<ul>
 										<li>
 											<Link to="/book">Back</Link>
-										</li>
+										</li>{localStorage.status === "0" || null ? (<div>
 										<li>
 											<Link to={`/book/desc/edit/${data.idBook}`}>Edit</Link>
 										</li>
@@ -53,18 +43,18 @@ class BookDesc extends Component {
 											<Link to={'/book'} onClick={this.delete.bind(this)}>
 												Delete
 											</Link>
-										</li>
+										</li></div>):""}
 									</ul>
 									<img className="header" src={data.image} alt={data.bookName} />
 								</div>
 								<div className="content">
 									<img className="image" src={data.image} alt={data.bookName} />
 									<p className="title">{data.bookName}</p>
-									{data.Status === 1 ? (
+									{localStorage.status === "1" ? data.Status === 1 && Number(localStorage.idUser) === data.idUser  ? (
 										<Return id={data.idBook} style={{position:"absolute"}}/>
-									) : (
+									) : data.Status===0 ?(
 										<Borrow id={data.idBook}/>
-									)}<div><p><b>{data.author}</b></p></div>
+									):"":""}<div><p><b>{data.author}</b></p></div>
 									<div
 										style={{
 											borderRadius: '40px',

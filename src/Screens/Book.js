@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { getBook } from '../Publics/redux/action/book';
 import './assets/flex.css';
 import Add from '../Component/common/Add'
-import { resolve } from 'q';
 
 function text(text) {
     if (text.length > 25) {
