@@ -20,17 +20,24 @@ class Add extends Component {
 		this.state = {
 			modal: false,
 			book: [],
+			file:null
 		};
 
 		this.toggle = this.toggle.bind(this);
+        this.onChangeFile = this.onChangeFile.bind(this)
 	}
 
 	toggle() {
 		this.setState({
 			modal: !this.state.modal
 		});
-	}	
-
+	}
+	onChangeFile = (e) => {
+        console.log(e.target.files[0])
+        this.setState({
+            file: e.target.files[0],
+        })
+    }
 	render() {
 		const bookAdd = () => {
 			let idCat = '';
@@ -47,44 +54,46 @@ class Add extends Component {
 				default:
 					idCat = 1;
 			}
-			this.state.book.push({
-				bookName: this.state.title,
-				author: this.state.author,
-				desc: this.state.desc,
-				locRack: this.state.location,
-				image: this.state.image,
-				idCat,
-			});
-			add()
+			const dataFile = new FormData()
+			dataFile.append('image', this.state.file)
+			dataFile.append('bookName', this.state.title)
+			dataFile.append('author', this.state.author)
+			dataFile.append('locRack', this.state.locRack)
+			dataFile.append('desc', this.state.desc)
+			dataFile.append('idCat', idCat)
+			// this.state.book.push({
+			// 	dataFile
+			// });
+			add(dataFile)
 			this.setState((prevState) => ({
 				modal: !prevState.modal
 			}));
 			console.log(this.state.book);
 		};
-		let add = async () => {
-			await this.props.dispatch(postBook(this.state.book[0])).then(()=>{
-                swal({
-                    title: "Succes",
-                    text: "Add Success !!",
-                    icon: "success",
-                    button: "OK"
-                })
-            })
-            .catch(()=>{
-                swal({
-                    title: "Add Failed",
-                    text: "Book Is Avalaible",
-                    icon: "warning",
-                    buttons: "OK"
-                }).then(() => {
-					window.location.href = '/book';
-				  })
-            })				
+		let add = async (data) => {
+			await this.props.dispatch(postBook(data)).then(() => {
+				swal({
+					title: "Succes",
+					text: "Add Success !!",
+					icon: "success",
+					button: "OK"
+				})
+			})
+				.catch(() => {
+					swal({
+						title: "Add Failed",
+						text: "Book Is Avalaible",
+						icon: "warning",
+						buttons: "OK"
+					}).then(() => {
+						window.location.href = '/book';
+					})
+				})
 		};
 		return (
 			<div>
 				<button class="button2" onClick={this.toggle}>
-					{localStorage.status === "0"? <label>ADD</label> : <label>Donate</label>}
+					{localStorage.status === "0" ? <label>ADD</label> : <label>Donate</label>}
 				</button>
 				<Modal isOpen={this.state.modal} toggle={this.toggle} className="{this.props.className} modal-lg">
 					<ModalHeader toggle={this.toggle}>
@@ -128,12 +137,13 @@ class Add extends Component {
 								</Label>
 								<Col sm={9}>
 									<Input
-										type="text"
+										type="file"
 										name="title"
-										onChange={(e) => this.setState({ image: e.target.value })}
+										onChange={this.onChangeFile}
 										id="title"
 										placeholder="Image..."
 										bsSize="lg"
+										style={{ height: 40, fontSize: 12 }}
 									/>
 								</Col>
 							</FormGroup>
@@ -192,8 +202,8 @@ class Add extends Component {
 	}
 }
 const mapStateToProps = state => {
-    return {
-        book: state.book
-    };
+	return {
+		book: state.book
+	};
 };
-export default connect(mapStateToProps) (Add);
+export default connect(mapStateToProps)(Add);
