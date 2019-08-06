@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-export const getBook = () => {
+export const getBook = (page) => {
   return {
     type: 'GET_BOOK',
-    payload: axios.get(`https://restapiperpus.herokuapp.com/book`),
+    payload: axios.get(`https://restapiperpus.herokuapp.com/books?page=${page}`),
   };
 };
 export const getBookById = (bookid) => {
