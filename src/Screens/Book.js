@@ -15,12 +15,11 @@ function text(text) {
 }
 class book extends Component {
 	state = {
-		books: [],
-		page : 1
+		books: []
 	};
 	componentDidMount = async () => {
         console.log('masuk')
-		await this.props.dispatch(getBook(page));
+		await this.props.dispatch(getBook());
 		await new Promise (resolve => setTimeout(resolve,400))
 		this.setState({
 			books: this.props.book
