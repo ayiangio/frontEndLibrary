@@ -3,7 +3,7 @@ import axios from 'axios';
 export const getBook = (page) => {
   return {
     type: 'GET_BOOK',
-    payload: axios.get(`https://restapiperpus.herokuapp.com/books?page=${page}`),
+    payload: axios.get(`https://restapiperpus.herokuapp.com/book?page=${page}`),
   };
 };
 export const getBookById = (bookid) => {
