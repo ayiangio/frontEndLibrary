@@ -2,7 +2,8 @@ const initialState = {
 	bookList: [],
 	isLoading: false,
 	isFulfilled: false,
-	isRejected: false
+	isRejected: false,
+	jumlah : 0
 };
 
 const book = (state = initialState, action) => {
@@ -25,7 +26,8 @@ const book = (state = initialState, action) => {
 				...state,
 				isLoading: false,
 				isFulfilled: true,
-				bookList: action.payload.data.result
+				bookList: action.payload.data.result,
+				jumlah : action.payload.data.jumlah
 			};
 		case 'GET_BOOK_ID_PENDING':
 			return {

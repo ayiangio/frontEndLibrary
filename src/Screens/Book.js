@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getBook } from '../Publics/redux/action/book';
+import Pagination from "react-js-pagination";
 import './assets/flex.css';
 import Add from '../Component/common/Add'
 
@@ -16,16 +17,27 @@ function text(text) {
 class book extends Component {
 	state = {
 		books: [],
-		page : 1
+		activePage: 1
 	};
 	componentDidMount = async () => {
         console.log('masuk')
-		await this.props.dispatch(getBook(this.state.page));
+		await this.props.dispatch(getBook(this.state.activePage));
 		await new Promise (resolve => setTimeout(resolve,400))
 		this.setState({
 			books: this.props.book
 		});
 	};
+	handlePageChange = async (pageNumber) => {
+		console.log(`active page is ${pageNumber}`);
+        await this.props.dispatch(getBook(pageNumber))
+            .then((response) => {
+                this.setState({ 
+					activePage : pageNumber,
+					books: this.props.book 
+				});
+            }
+            )
+    }
 	render() {
 		const { books } = this.state;
 		const list = books.bookList;
@@ -46,8 +58,19 @@ class book extends Component {
 								</a>
 							</div>
 						);
-                    })}
+					})}
+					<div style={{position:'absolute',marginTop:'55%'}}>
+					<Pagination
+                    activePage={this.state.activePage}
+                    itemsCountPerPage={6}
+                    totalItemsCount={this.props.jumlah}
+                    pageRangeDisplayed={5}
+                    itemClass="page-item"
+                    linkClass="page-link"
+					onChange={this.handlePageChange.bind(this)}
+                /></div>
                     </div>
+					
 			</div>
 		);
 	}
@@ -55,7 +78,8 @@ class book extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		book: state.book
+		book: state.book,
+        jumlah: state.book.jumlah
 	};
 };
 
