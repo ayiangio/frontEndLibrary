@@ -28,10 +28,12 @@ class Member extends Component {
               .then((buttons) => {
                 if (buttons) {
                     del(idUser)
-                  swal("Poof! Your book has been deleted!", {
+                    swal("Poof! Your book has been deleted!", {
                     icon: "success",
-                  });
-                  window.location.href = '/book/profile/users'
+                  })
+                  .then(()=>{
+                    window.location.href = '/book/profile/users'
+                  })
                 } else {
                   swal("Your file is safe!");
                 }
