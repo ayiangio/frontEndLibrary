@@ -1,29 +1,66 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">LibrarySkuy Web</h1>
+<p align="center">
+  <img width="250" src="https://image.flaticon.com/icons/png/512/86/86870.png"/>
+</p>
+<p align="center">
+  Built with ReactJs.
+</p>
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
-### `npm instal`
+- [Introduction](#introduction)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Usage](#usage-for-development)
+- [Screenshots](#screenshots)
+- [Release web](#release-apk)
+- [Contributors](#contributors)
 
-Install the dependecies 
-````
-$ npm install
-````
-### `npm start`
+## Introduction
+<b>Libraryku</b> is an application to make online book loan transactions based on Web. There are several books with famous authors and can read a brief synopsis by looking at the details of the book
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The purpose of this application is for people to borrow books online and easily
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Features
+* Users must become member before can loan some books
+* Users can loan some books
+* Display history loan book
+* Forfeit when return book more then date loan
+* Donate book
+* And others
 
-### BackEnd 
-This Web App Have A Backend And you can run it in https://apilib.herokuapp.com/book you can only <b>Get</b> the data 
+## Requirements
+* [`npm`](https://www.npmjs.com/get-npm)
+* [`reactjs`](https://reactjs.org/docs/getting-started.html)
 
-### Deployment
+## Usage for development
+1. Open your terminal or command prompt
+2. Type `git clone https://github.com/ayiangio/frontEndLibrary`
+3. Open the folder and type `npm install` for install dependencies
+4. Type `npm start` for run this app.
 
-This Web App Deploy on https://libraryskuy.netlify.com/book
+## Screenshots
+<div align="center">
+    <img width="250" src="./src/img/3.png">
+    <img width="250" src="./src/img/2.png">
+    <img width="250" src="./src/img/4.png"">
+    <img width="250" src="./src/img/1.png"">
+    <img width="250" src="./src/img/6.png"">
+</div>
 
-<h3>Happy Codingg !!!</h3>
+## Release Web
+[![Netlify Status](https://api.netlify.com/api/v1/badges/85e33a03-d82a-4947-8b71-f38561c69149/deploy-status)](https://libraryskuy.netlify.com/book)
 
-#### Author &copy; Ayiangio
+## Contributors
+<center>
+  <table>
+    <tr>
+      <td align="center">
+        <a href="https://github.com/andreferi3">
+          <img width="100" src="https://avatars3.githubusercontent.com/u/15377357?s=460&v=4" alt="Ayiangio"><br/>
+          <sub><b>Ayi Angio</b></sub>
+        </a>
+      </td>
+    </tr>
+  </table>
+</center>
