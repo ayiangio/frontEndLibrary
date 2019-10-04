@@ -20,8 +20,8 @@ class Routing extends Component {
         <Provider store={store}>
             <div>
                 <Router>
-                    <Route exact path ={'/book'} component={Home} />
-                    <Route exact path={'/book'} component={Book} />
+                    <Route exact path ={'/'} component={Home} />
+                    <Route exact path={'/'} component={Book} />
                     <Route path={'/book/profile'} component={ProfileUser} />
                     <Route exact path={'/book/profile'} component={Account} />
                     <Route path={'/book/profile/history'} component={History} />
